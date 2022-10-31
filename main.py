@@ -13,14 +13,12 @@ class Fsm:
     #     self.lockCodeList = [int(x) for x in str(lockCode)]
 
     currCode = None
-    codeList = []
     locked = True
 
     unlockIndex = 0
     lockIndex = 0
 
     unlockCode = 850161
-    # unlockCode = 1234
     lockCode = 850164
 
     unlockCodeList = [int(x) for x in str(unlockCode)]
@@ -35,7 +33,7 @@ class Fsm:
         self.unlockIndex = 0
         self.lockIndex = 0
 
-    def inputString(self,userInput):
+    def codeCrack(self,userInput):
         self.resetVars()
         # print(userInput)
         userInput = [x for x in userInput]
@@ -43,7 +41,6 @@ class Fsm:
             self.currCode = x
             if self.currCode.isdigit():
                 self.currCode = int(self.currCode)
-                # self.codeList.append(self.currCode)
                 if self.currCode == self.unlockCodeList[self.unlockIndex]: #code for tracking unlocking
                     self.unlockIndex += 1
                     if self.unlockIndex == len(self.unlockCodeList):
@@ -73,14 +70,13 @@ class Fsm:
 
 
     def bufferedInput(self):
-        self.resetVars()
-        print("Start buffering your code line by line. Enter Q to quit")
-        while self.currCode != "Q":
+        self.resetVars() #resets all the variables to default state if the function were to be called again
+        print("Start entering codes one digit at a time, pressing enter after each input. Enter Q to quit")
+        while self.currCode != "Q": #check if user wishes to stop anytime
             self.currCode = input()
             # print(self.currCode)
-            if self.currCode.isdigit():
-                self.currCode = int(self.currCode)
-                self.codeList.append(self.currCode)
+            if self.currCode.isdigit(): #check if input is a digit, disregard otherwise
+                self.currCode = int(self.currCode) #string input to int
                 if self.currCode == self.unlockCodeList[self.unlockIndex]: #code for tracking unlocking
                     self.unlockIndex += 1
                     if self.unlockIndex == len(self.unlockCodeList):
@@ -110,7 +106,7 @@ class Fsm:
 
 def main():
     fsm1 = Fsm()
-
+    fsm1.bufferedInput()
 
     # needRepeat = True
     # while needRepeat:
@@ -131,12 +127,14 @@ def main():
 
     timeList = []
     symbolList = []
-    for x in range(1):
+    trialNumber = 0
+    for x in range(10):
+        trialNumber += 1
         fsm1.locked = True
         totalSymbols = 0
         codeGuess = []
         attempt = 1
-        giveup = 99999999999999999999999999999
+        giveup = 25
         st = time.time()
         while fsm1.locked:
             while attempt <= giveup and fsm1.locked:
@@ -146,8 +144,8 @@ def main():
                 # codeGuess = x #random string everytime
                 codeGuess.append(x) #attempts
                 totalSymbols += 1
-                # print("TRYING:", (codeGuess))
-                fsm1.inputString(str(codeGuess))
+                print('test iteration:', trialNumber, " : TRYING:", (codeGuess))
+                fsm1.codeCrack(str(codeGuess))
                 attempt += 1 #attempts
             codeGuess = []
             attempt = 1 #attempts
