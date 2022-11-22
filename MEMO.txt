@@ -1,0 +1,10 @@
+I have created a program that uses the code 850161 to unlock an imaginary lock and uses the code 850164 to lock this imaginary lock.
+I've done this by creating an array of the codes that has an index pointer that increments every time the correct number is guessed, but resets back to index 0 if the incorrect number is given.
+In practice, this works like an fsm. View drawing of the fsm by opening img.png.
+
+This program can also 'crack' the code using the brute force crack() method that I coded.
+This method calls the codeCrack() method however many times you want to see the code successfully crack and then displays statistics on the cracking algorithm.
+I used python to create this program and while using it I have learned just how slow python is at tasks like these relative to compliled languages like Java or C.
+I wrote this program im Python in order for it to run with ease when it came time for submission.
+I didn't want to need to worry about if the code wouldn't build or compile right on another machine, so that was why I chose python over Java.
+If I were to write this for the sake of efficiency or speed in the code, I would rewrite this program in Java or C.

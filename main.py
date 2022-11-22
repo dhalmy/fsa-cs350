@@ -116,6 +116,8 @@ class Fsm:
             print('Execution time:', elapsed_time, 'seconds')
             print("Total symbols generated: ", totalSymbols)
 
+        print()
+        print()
         print("Minimum time to compute code:", min(timeList), "seconds")
         print("Maximum time to compute code:", max(timeList), "seconds")
         print("Average time to compute code:", (sum(timeList)) / (len(timeList)), "seconds")
@@ -138,3 +140,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+    print()
+    print("enter anything to quit")
+    input()
