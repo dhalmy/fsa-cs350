@@ -7,4 +7,4 @@ This user input is meant to be individual numbers, from 0-9, however any other c
 The 'lock' begins in a locked state, where it requires the right sequence of numbers to unlock. The unlock code is 850161.
 Once unlocked, a sequence of numbers is required to unlock it. The unlock code is 850164.
 
-Once the user has quit the loop, the program asks the user how many times to run the cracking the code method.
+Once the user has quit the loop, the program asks the user how many times to run the cracking the code method
